@@ -8,4 +8,7 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 
 // Route Dashboard
-$routes->get('/dashboard', 'Dashboard::index');
+$routes->get('/dashboard', 'Admin\Dashboard::index');
+
+// Rout Login
+$routes->get('/login', 'Admin\Auth::index');
