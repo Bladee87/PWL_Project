@@ -1,0 +1,62 @@
+# --- [ SECURITY ] ---
+# Jangan pernah mengunggah file kredensial ke GitHub
+.env
+.env.test
+.env.production
+.env.development
+
+# --- [ CODEIGNITER 4 ] ---
+# Mengabaikan semua file di folder writable, tapi tetap menyisakan foldernya
+/writable/*
+!/writable/.gitkeep
+
+# Mengabaikan file log dan cache
+/writable/cache/*
+/writable/logs/*
+/writable/session/*
+/writable/debugbar/*
+
+# Jika kamu menyimpan file upload user di public/uploads
+/public/uploads/*
+!/public/uploads/.gitkeep
+
+# --- [ DEPENDENCIES ] ---
+# Folder vendor dikelola oleh Composer, tidak perlu masuk Git
+/vendor/
+/node_modules/
+/bower_components/
+
+# --- [ TESTING & COVERAGE ] ---
+/tests/_output/
+/tests/_support/_generated/
+phpunit.xml
+.phpunit.result.cache
+
+# --- [ IDE & TOOLS ] ---
+# VS Code
+.vscode/
+*.code-workspace
+
+# JetBrains (PHPStorm)
+.idea/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# --- [ OPERATING SYSTEM ] ---
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux
+*~
+.directory
+.Trash-*
+.fuse_hidden*
