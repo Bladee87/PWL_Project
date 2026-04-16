@@ -7,7 +7,7 @@ class Auth extends BaseController
 {
     public function index(): string
     {
-        return view('admin/index');
+        return view('admin/login');
     }
 }
 
