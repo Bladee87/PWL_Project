@@ -13,5 +13,5 @@ $routes->get('/', function () {
 $routes->get('/dashboard', 'Admin\Dashboard::index');
 
 // Route Login and Register
-$routes->get('login', 'Admin\Auth::index');
-$routes->get('register', 'Admin\Auth::index');
+$routes->get('login', 'Admin\Auth::login');
+$routes->get('register', 'Admin\Auth::register');
