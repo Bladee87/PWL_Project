@@ -10,8 +10,11 @@ $routes->get('/', function () {
 });
 
 // Route Dashboard
-$routes->get('/dashboard', 'Admin\Dashboard::index');
+$routes->get('/admin/dashboard', 'Admin\Dashboard::index');
 
 // Route Login and Register
-$routes->get('login', 'Admin\Auth::login');
-$routes->get('register', 'Admin\Auth::register');
+$routes->post('/admin/saveLogin', 'Admin\Auth::saveLogin');
+$routes->post('/admin/saveRegister', 'Admin\Auth::saveRegister');
+$routes->get('/admin/login', 'Admin\Auth::login');
+$routes->get('/admin/register', 'Admin\Auth::register');
+$routes->get('/admin/logout', 'Admin\Auth::logout');
