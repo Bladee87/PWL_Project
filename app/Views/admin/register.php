@@ -19,7 +19,8 @@
 
     <!-- Custom styles for this template-->
     <link href="<?= base_url('assets/css/sb-admin-2.min.css') ?>" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    
 
 </head>
 
@@ -32,20 +33,31 @@
                 
             <div class="col-xl-10 col-lg-12 col-md-9">
 
-                <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card o-hidden border-0 shadow-lg my-5 ">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
                             <div class="col-lg-6 d-none d-lg-block bg-login-image" style="background:url('<?= base_url('assets/img/Admin.jpg') ?>'); background-size: cover;  background-position:center;"></div>
                             <div class="col-lg-6">
+                                <div class="text-right mx-3">
+                                    <a href="<?= base_url('/admin/login') ?>" class="btn btn-primary btn-user mt-3"><i class="bi bi-arrow-left"></i> Kembali</a>
+                                </div>
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Login</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Register</h1>
                                     </div>
-                                    <form class="user" method="post" action="<?= base_url('/admin/saveLogin'); ?>">
+                                    <form class="user" method="post" action="<?= base_url('/admin/saveRegister'); ?>">
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control-user"
-                                                id="exampleInputEmail" name="username" aria-describedby="emailHelp"
+                                                id="name" name="name" aria-describedby="emailHelp"
+                                                placeholder="Masukan Nama..." required>
+                                            <?php if (isset(session('errors')['name'])) : ?>
+                                                <small class="text-danger"><?= session('errors')['name'] ?></small>
+                                            <?php endif; ?>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control form-control-user"
+                                                id="exampleInputUsername" name="username" aria-describedby="emailHelp"
                                                 placeholder="Masukan Username..." required>
                                             <?php if (isset(session('errors')['username'])) : ?>
                                                 <small class="text-danger"><?= session('errors')['username'] ?></small>
@@ -58,15 +70,18 @@
                                                 <small class="text-danger"><?= session('errors')['password'] ?></small>
                                             <?php endif; ?>
                                         </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control form-control-user"
+                                                id="exampleInputTelephone" name="telephone" placeholder="Masukkan Nomor Telepon..." required>
+                                            <?php if (isset(session('errors')['telephone'])) : ?>
+                                                <small class="text-danger"><?= session('errors')['telephone'] ?></small>
+                                            <?php endif; ?>
+                                        </div>
                                         <div class="form-group d-flex justify-content-around">
-                                            <button type="submit" class="btn btn-primary btn-user px-5">Login</button>
+                                            <button type="submit" class="btn btn-primary btn-user px-5">Register</button>
                                             <button type="reset" class="btn btn-primary btn-user px-5">Reset</button>
                                         </div>
                                     </form>
-                                    <hr>
-                                    <div class="text-center">
-                                        <a class="small" href="<?= base_url('/admin/register'); ?>">Buat Akun!</a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -88,29 +103,6 @@
 
     <!-- Custom scripts for all pages-->
     <script src="<?= base_url('assets/js/sb-admin-2.min.js') ?>"></script>
-
-    <!-- SweetAlert2 Success And Error Messages -->
-    <?php if (session()->getFlashdata('success')) : ?>
-        <script>
-            Swal.fire({
-                icon: 'success',
-                title: 'Berhasil!',
-                text: '<?= session()->getFlashdata('success'); ?>',
-                showConfirmButton: false,
-                timer: 2000 // Akan tertutup otomatis dalam 2 detik
-            });
-        </script>
-    <?php endif; ?>
-
-    <?php if (session()->getFlashdata('errors')) : ?>
-        <script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Waduh...',
-                text: 'Ada kesalahan pada inputan kamu!',
-            });
-        </script>
-    <?php endif; ?>
 
 </body>
 

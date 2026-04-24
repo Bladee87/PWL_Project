@@ -34,8 +34,8 @@
         <p class="lead mb-5">Manajemen bengkel dengan sangat efisien.</p>
         
         <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
-            <a href="<?= base_url('login'); ?>" class="btn btn-primary btn-lg px-5">Login</a>
-            <a href="<?= base_url('register'); ?>" class="btn btn-outline-light btn-lg px-5">Register</a>
+            <a href="<?= base_url('/admin/login'); ?>" class="btn btn-primary btn-lg px-5">Login</a>
+            <a href="<?= base_url('/admin/register'); ?>" class="btn btn-outline-light btn-lg px-5">Register</a>
         </div>
     </div>
 
