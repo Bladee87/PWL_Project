@@ -209,6 +209,13 @@ class Dashboard extends BaseController
     {
         $id = $this->request->getPost('id_mobil');
 
+        $rules = [
+            'nama_mobil' => 'required|alpha_numeric_space|min_length[4]|max_length[50]',
+            'no_polisi' => 'required|max_length[12]|alpha_numeric_space',
+            'merek_mobil' => 'required|alpha_space|min_length[3]|max_length[25]',
+            'tipe_mobil' => 'required|in_list[Sedan,MPV,SUV,Hatchback]'
+        ];
+
         $message = [
             'nama_mobil' => [
                 'required' => 'Nama Mobil harus diisi.',
