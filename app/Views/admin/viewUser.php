@@ -37,17 +37,19 @@
                             <td><?= $u['username']; ?></td>
                             <td><?= $u['no_telpon']; ?></td>
                             <td>
-                                <button type="button" class="btn btn-warning btn-sm btn-edit" 
-                                    data-id="<?= $u['id_admin']; ?>"
-                                    data-nama="<?= $u['nama_admin']; ?>"
-                                    data-username="<?= $u['username']; ?>"
-                                    data-telpon="<?= $u['no_telpon']; ?>"
-                                    data-toggle="modal" data-target="#editModal">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                                <a href="<?= base_url('admin/user/delete/' . $u['id_admin']) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini?')">
-                                    <i class="fas fa-trash"></i>
-                                </a>
+                                <div class="d-flex gap-2 align-items-center">
+                                    <button type="button" class="btn btn-warning btn-sm btn-edit" 
+                                        data-id="<?= $u['id_admin']; ?>"
+                                        data-nama="<?= $u['nama_admin']; ?>"
+                                        data-username="<?= $u['username']; ?>"
+                                        data-telpon="<?= $u['no_telpon']; ?>"
+                                        data-toggle="modal" data-target="#editModal">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <a href="<?= base_url('admin/user/delete/' . $u['id_admin']) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini?')">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </div>
                             </td>
                         </tr>
                         <?php endforeach; ?>
@@ -74,18 +76,30 @@
                     <div class="form-group">
                         <label>Nama Admin</label>
                         <input type="text" name="nama_admin" class="form-control" required>
+                        <?php if (isset(session('errors')['nama_admin'])) : ?>
+                            <script>alert("<?= session('errors')['nama_admin'] ?>")</script>
+                        <?php endif; ?>
                     </div>
                     <div class="form-group">
                         <label>Username</label>
                         <input type="text" name="username" class="form-control" required>
+                        <?php if (isset(session('errors')['username'])) : ?>
+                            <script>alert("<?= session('errors')['username'] ?>")</script>
+                        <?php endif; ?>
                     </div>
                     <div class="form-group">
                         <label>Password</label>
                         <input type="password" name="password" class="form-control" required>
+                        <?php if (isset(session('errors')['password'])) : ?>
+                            <script>alert("<?= session('errors')['password'] ?>")</script>
+                        <?php endif; ?>
                     </div>
                     <div class="form-group">
                         <label>No Telpon</label>
                         <input type="text" name="no_telpon" class="form-control" required>
+                        <?php if (isset(session('errors')['no_telpon'])) : ?>
+                            <script>alert("<?= session('errors')['no_telpon'] ?>")</script>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -113,18 +127,30 @@
                     <div class="form-group">
                         <label>Nama Admin</label>
                         <input type="text" name="nama_admin" id="edit-nama" class="form-control" required>
+                        <?php if (isset(session('errors')['nama_admin'])) : ?>
+                            <script>alert("<?= session('errors')['nama_admin'] ?>")</script>
+                        <?php endif; ?>
                     </div>
                     <div class="form-group">
                         <label>Username</label>
                         <input type="text" name="username" id="edit-username" class="form-control" required>
+                        <?php if (isset(session('errors')['username'])) : ?>
+                            <script>alert("<?= session('errors')['username'] ?>")</script>
+                        <?php endif; ?>
                     </div>
                     <div class="form-group">
                         <label>Password (Kosongkan jika tidak ingin mengubah)</label>
                         <input type="password" name="password" class="form-control">
+                        <?php if (isset(session('errors')['password'])) : ?>
+                            <script>alert("<?= session('errors')['password'] ?>")</script>
+                        <?php endif; ?>
                     </div>
                     <div class="form-group">
                         <label>No Telpon</label>
                         <input type="text" name="no_telpon" id="edit-telpon" class="form-control" required>
+                        <?php if (isset(session('errors')['no_telpon'])) : ?>
+                            <script>alert("<?= session('errors')['no_telpon'] ?>")</script>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="modal-footer">

@@ -30,7 +30,7 @@
 <body>
 
     <div class="container hero-section">
-        <h1 class="display-3 fw-bold mb-3">Sistem Informasi Edi Jaya Motor</h1>
+        <h1 class="display-3 fw-bold mb-3">Sistem Informasi </h1>
         <p class="lead mb-5">Manajemen bengkel dengan sangat efisien.</p>
         
         <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">

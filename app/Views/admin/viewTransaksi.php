@@ -41,19 +41,21 @@
                             <td><?= number_format($t['total_km'], 0, ',', '.'); ?></td>
                             <td><?= number_format($t['total_harga'], 0, ',', '.'); ?></td>
                             <td>
-                                <button type="button" class="btn btn-warning btn-sm btn-edit" 
-                                    data-id="<?= $t['id_transaksi']; ?>"
-                                    data-mobil="<?= $t['id_mobil']; ?>"
-                                    data-masuk="<?= $t['tanggal_masuk']; ?>"
-                                    data-keluar="<?= $t['tanggal_keluar']; ?>"
-                                    data-km="<?= $t['total_km']; ?>"
-                                    data-harga="<?= $t['total_harga']; ?>"
-                                    data-toggle="modal" data-target="#editModal">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                                <a href="<?= base_url('admin/transaksi/delete/' . $t['id_transaksi']) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini?')">
-                                    <i class="fas fa-trash"></i>
-                                </a>
+                                <div class="d-flex gap-1 align-items-center">
+                                    <button type="button" class="btn btn-warning btn-sm btn-edit" 
+                                        data-id="<?= $t['id_transaksi']; ?>"
+                                        data-mobil="<?= $t['id_mobil']; ?>"
+                                        data-masuk="<?= $t['tanggal_masuk']; ?>"
+                                        data-keluar="<?= $t['tanggal_keluar']; ?>"
+                                        data-km="<?= $t['total_km']; ?>"
+                                        data-harga="<?= $t['total_harga']; ?>"
+                                        data-toggle="modal" data-target="#editModal">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <a href="<?= base_url('admin/transaksi/delete/' . $t['id_transaksi']) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini?')">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </div>
                             </td>
                         </tr>
                         <?php endforeach; ?>
@@ -97,10 +99,16 @@
                     <div class="form-group">
                         <label>Total KM</label>
                         <input type="number" name="total_km" class="form-control" required>
+                        <?php if (isset(session('errors')['total_km'])) : ?>
+                            <script>alert("<?= session('errors')['total_km'] ?>")</script>
+                        <?php endif; ?>
                     </div>
                     <div class="form-group">
                         <label>Total Harga</label>
                         <input type="number" name="total_harga" class="form-control" required>
+                        <?php if (isset(session('errors')['total_harga'])) : ?>
+                            <script>alert("<?= session('errors')['total_harga'] ?>")</script>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -145,10 +153,16 @@
                     <div class="form-group">
                         <label>Total KM</label>
                         <input type="number" name="total_km" id="edit-km" class="form-control" required>
+                        <?php if (isset(session('errors')['total_km'])) : ?>
+                            <script>alert("<?= session('errors')['total_km'] ?>")</script>
+                        <?php endif; ?>
                     </div>
                     <div class="form-group">
                         <label>Total Harga</label>
                         <input type="number" name="total_harga" id="edit-harga" class="form-control" required>
+                        <?php if (isset(session('errors')['total_harga'])) : ?>
+                            <script>alert("<?= session('errors')['total_harga'] ?>")</script>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="modal-footer">

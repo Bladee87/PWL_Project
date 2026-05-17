@@ -37,17 +37,19 @@
                             <td><?= $dt['barang_jasa']; ?></td>
                             <td><?= number_format($dt['harga'], 0, ',', '.'); ?></td>
                             <td>
-                                <button type="button" class="btn btn-warning btn-sm btn-edit" 
-                                    data-id="<?= $dt['id_detail_transaksi']; ?>"
-                                    data-transaksi="<?= $dt['id_transaksi']; ?>"
-                                    data-barang="<?= $dt['barang_jasa']; ?>"
-                                    data-harga="<?= $dt['harga']; ?>"
-                                    data-toggle="modal" data-target="#editModal">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                                <a href="<?= base_url('admin/detail-transaksi/delete/' . $dt['id_detail_transaksi']) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini?')">
-                                    <i class="fas fa-trash"></i>
-                                </a>
+                                <div class="d-flex gap-2 align-items-center">
+                                    <button type="button" class="btn btn-warning btn-sm btn-edit" 
+                                        data-id="<?= $dt['id_detail_transaksi']; ?>"
+                                        data-transaksi="<?= $dt['id_transaksi']; ?>"
+                                        data-barang="<?= $dt['barang_jasa']; ?>"
+                                        data-harga="<?= $dt['harga']; ?>"
+                                        data-toggle="modal" data-target="#editModal">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <a href="<?= base_url('admin/detail-transaksi/delete/' . $dt['id_detail_transaksi']) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini?')">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </div>
                             </td>
                         </tr>
                         <?php endforeach; ?>
@@ -83,10 +85,16 @@
                     <div class="form-group">
                         <label>Barang/Jasa</label>
                         <input type="text" name="barang_jasa" class="form-control" required>
+                        <?php if (isset(session('errors')['barang_jasa'])) : ?>
+                            <script>alert("<?= session('errors')['barang_jasa'] ?>")</script>
+                        <?php endif; ?>
                     </div>
                     <div class="form-group">
                         <label>Harga</label>
                         <input type="number" name="harga" class="form-control" required>
+                        <?php if (isset(session('errors')['harga'])) : ?>
+                            <script>alert("<?= session('errors')['harga'] ?>")</script>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -123,10 +131,16 @@
                     <div class="form-group">
                         <label>Barang/Jasa</label>
                         <input type="text" name="barang_jasa" id="edit-barang" class="form-control" required>
+                        <?php if (isset(session('errors')['barang_jasa'])) : ?>
+                            <script>alert("<?= session('errors')['barang_jasa'] ?>")</script>
+                        <?php endif; ?>
                     </div>
                     <div class="form-group">
                         <label>Harga</label>
                         <input type="number" name="harga" id="edit-harga" class="form-control" required>
+                        <?php if (isset(session('errors')['harga'])) : ?>
+                            <script>alert("<?= session('errors')['harga'] ?>")</script>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="modal-footer">

@@ -41,19 +41,21 @@
                             <td><?= $k['merek_mobil']; ?></td>
                             <td><?= $k['tipe_mobil']; ?></td>
                             <td>
-                                <button type="button" class="btn btn-warning btn-sm btn-edit" 
-                                    data-id="<?= $k['id_mobil']; ?>"
-                                    data-pelanggan="<?= $k['id_pelanggan']; ?>"
-                                    data-nama="<?= $k['nama_mobil']; ?>"
-                                    data-polisi="<?= $k['no_polisi']; ?>"
-                                    data-merek="<?= $k['merek_mobil']; ?>"
-                                    data-tipe="<?= $k['tipe_mobil']; ?>"
-                                    data-toggle="modal" data-target="#editModal">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                                <a href="<?= base_url('admin/kendaraan/delete/' . $k['id_mobil']) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini?')">
-                                    <i class="fas fa-trash"></i>
-                                </a>
+                                <div class="d-flex gap-2 align-items-center">
+                                    <button type="button" class="btn btn-warning btn-sm btn-edit" 
+                                        data-id="<?= $k['id_mobil']; ?>"
+                                        data-pelanggan="<?= $k['id_pelanggan']; ?>"
+                                        data-nama="<?= $k['nama_mobil']; ?>"
+                                        data-polisi="<?= $k['no_polisi']; ?>"
+                                        data-merek="<?= $k['merek_mobil']; ?>"
+                                        data-tipe="<?= $k['tipe_mobil']; ?>"
+                                        data-toggle="modal" data-target="#editModal">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <a href="<?= base_url('admin/kendaraan/delete/' . $k['id_mobil']) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini?')">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </div>
                             </td>
                         </tr>
                         <?php endforeach; ?>
@@ -89,18 +91,36 @@
                     <div class="form-group">
                         <label>Nama Mobil</label>
                         <input type="text" name="nama_mobil" class="form-control" required>
+                        <?php if (isset(session('errors')['nama_mobil'])) : ?>
+                            <script>alert("<?= session('errors')['nama_mobil'] ?>")</script>
+                        <?php endif; ?>
                     </div>
                     <div class="form-group">
                         <label>No Polisi</label>
                         <input type="text" name="no_polisi" class="form-control" required>
+                        <?php if (isset(session('errors')['no_polisi'])) : ?>
+                            <script>alert("<?= session('errors')['no_polisi'] ?>")</script>
+                        <?php endif; ?>
                     </div>
                     <div class="form-group">
                         <label>Merek Mobil</label>
                         <input type="text" name="merek_mobil" class="form-control" required>
+                        <?php if (isset(session('errors')['merek_mobil'])) : ?>
+                            <script>alert("<?= session('errors')['merek_mobil'] ?>")</script>
+                        <?php endif; ?>
                     </div>
                     <div class="form-group">
                         <label>Tipe Mobil</label>
-                        <input type="text" name="tipe_mobil" class="form-control" required>
+                        <select name="tipe_mobil" class="form-control" required>
+                            <option value="">-- Pilih Tipe Mobil --</option>
+                            <option value="Sedan">Sedan</option>
+                            <option value="MPV">MPV</option>
+                            <option value="SUV">SUV</option>
+                            <option value="Hatchback">Hatchback</option>
+                        </select>
+                        <?php if (isset(session('errors')['tipe_mobil'])) : ?>
+                            <script>alert("<?= session('errors')['tipe_mobil'] ?>")</script>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -137,18 +157,36 @@
                     <div class="form-group">
                         <label>Nama Mobil</label>
                         <input type="text" name="nama_mobil" id="edit-nama" class="form-control" required>
+                        <?php if (isset(session('errors')['nama_mobil'])) : ?>
+                            <script>alert("<?= session('errors')['tipe_mobil'] ?>")</script>
+                        <?php endif; ?>
                     </div>
                     <div class="form-group">
                         <label>No Polisi</label>
                         <input type="text" name="no_polisi" id="edit-polisi" class="form-control" required>
+                        <?php if (isset(session('errors')['no_polisi'])) : ?>
+                            <script>alert("<?= session('errors')['no_polisi'] ?>")</script>
+                        <?php endif; ?>
                     </div>
                     <div class="form-group">
                         <label>Merek Mobil</label>
                         <input type="text" name="merek_mobil" id="edit-merek" class="form-control" required>
+                        <?php if (isset(session('errors')['merek_mobil'])) : ?>
+                            <script>alert("<?= session('errors')['merek_mobil'] ?>")</script>
+                        <?php endif; ?>
                     </div>
                     <div class="form-group">
                         <label>Tipe Mobil</label>
-                        <input type="text" name="tipe_mobil" id="edit-tipe" class="form-control" required>
+                        <select name="tipe_mobil" class="form-control" id="edit-tipe" required>
+                            <option value="">-- Pilih Tipe Mobil --</option>
+                            <option value="Sedan">Sedan</option>
+                            <option value="MPV">MPV</option>
+                            <option value="SUV">SUV</option>
+                            <option value="Hatchback">Hatchback</option>
+                        </select>
+                        <?php if (isset(session('errors')['tipe_mobil'])) : ?>
+                            <script>alert("<?= session('errors')['tipe_mobil'] ?>")</script>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -185,7 +223,7 @@
             $('#edit-nama').val(nama);
             $('#edit-polisi').val(polisi);
             $('#edit-merek').val(merek);
-            $('#edit-tipe').val(tipe);
+            $('#edit-tipe').val(tipe).change(); // Trigger change event for select input
         });
     });
 </script>
